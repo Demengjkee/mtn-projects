@@ -8,31 +8,43 @@
 
 
 	<target name="clean">
+		<echo message="clean start" />
+		
 		<delete dir="${target}/"/>
 		<delete dir="${dist}/" />
 		<delete dir="${test}/target" />
 	</target>	
 
 	<target name="init" depends="clean">
+		<echo message="init start" />
+
 		<mkdir dir="${target}/" />
 		<mkdir dir="${dist}" />
 		<mkdir dir="${test}/target" />
 	</target>
 
 	<target name="compile" depends="init">
+		<echo message="compile start" />
+
 		<javac srcdir="${src}/" destdir="${target}/" classpath="${lib}/commons-collections-3.2.1.jar" />
 	</target>
 
 	<target name="test" depends="compile">
+		<echo message="test start" />
+
 		<javac srcdir="${test}/" destdir="${test}/target" classpath="${lib}/junit-4.11.jar" />
 		<java classpath="${test}/target" classname="com.test.UnitTest" />
 	</target>
 
 	<target name="jar" depends="test">
+		<echo message="jar start" />
+
 		<jar basedir="${target}/" jarfile="${target}/Project.jar" />
 	</target>
 
 	<target name="dist" depends="jar">
+		<echo message="dist start" />
+
 		<tar destfile="${dist}/Project-${timestamp}.tar">
 			<tarfileset dir="${target}">
 				<include name="Project.jar" />
