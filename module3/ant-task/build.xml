@@ -8,7 +8,7 @@
 
 
 	<target name="clean">
-		<echo message="clean start" />
+		<echo message="clean started" />
 		
 		<delete dir="${target}/"/>
 		<delete dir="${dist}/" />
@@ -16,7 +16,7 @@
 	</target>	
 
 	<target name="init" depends="clean">
-		<echo message="init start" />
+		<echo message="init started" />
 
 		<mkdir dir="${target}/" />
 		<mkdir dir="${dist}" />
@@ -24,26 +24,26 @@
 	</target>
 
 	<target name="compile" depends="init">
-		<echo message="compile start" />
+		<echo message="compile started" />
 
 		<javac srcdir="${src}/" destdir="${target}/" classpath="${lib}/commons-collections-3.2.1.jar" />
 	</target>
 
 	<target name="test" depends="compile">
-		<echo message="test start" />
+		<echo message="test started" />
 
 		<javac srcdir="${test}/" destdir="${test}/target" classpath="${lib}/junit-4.11.jar" />
 		<java classpath="${test}/target" classname="com.test.UnitTest" />
 	</target>
 
 	<target name="jar" depends="test">
-		<echo message="jar start" />
+		<echo message="jar started" />
 
 		<jar basedir="${target}/" jarfile="${target}/Project.jar" />
 	</target>
 
 	<target name="dist" depends="jar">
-		<echo message="dist start" />
+		<echo message="dist started" />
 
 		<tar destfile="${dist}/Project-${timestamp}.tar">
 			<tarfileset dir="${target}">
