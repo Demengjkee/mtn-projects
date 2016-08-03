@@ -1,0 +1,40 @@
+<project name="AntBuildPrj" default="dist" basedir=".">
+	<property name="config" location="config" />
+	<property name="lib" location="lib" />
+	<property name="target" location="target" />
+	<property name="dist" location="dist" />
+	<property name="src" location="src" />
+	<property name="test" location="test" />
+
+
+	<target name="clean">
+		<delete dir="${target}/"/>
+		<delete dir="${dist}/" />
+		<delete dir="${test}/target" />
+	</target>	
+
+	<target name="init" depends="clean">
+		<mkdir dir="${target}/" />
+		<mkdir dir="${dist}" />
+		<mkdir dir="${test}/target" />
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="${src}/" destdir="${target}/" classpath="${lib}/commons-collections-3.2.1.jar" />
+	</target>
+
+	<target name="test" depends="compile">
+		<javac srcdir="${test}/" destdir="${test}/target" classpath="${lib}/junit-4.11.jar" />
+		<java classpath="${test}/target" classname="com.test.UnitTest" />
+	</target>
+
+	<target name="jar" depends="test">
+		<jar basedir="${target}/" jarfile="${target}/Project.jar" />
+	</target>
+
+	<target name="dist" depends="jar">
+		<tar destfile="${dist}/Project.tar" basedir="${target}/" includes="*.jar" />
+	</target>
+	
+
+</project>
