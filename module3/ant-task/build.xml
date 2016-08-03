@@ -1,7 +1,7 @@
 <project name="AntBuildPrj" default="dist" basedir=".">
 
 	<tstamp>
-		<format property="timestamp" pattern="HH:mm" />
+		<format property="timestamp" pattern="HH-mm" />
 	</tstamp>
 
 	<property file="./.properties" />
@@ -51,6 +51,9 @@
 			</tarfileset>
 			<tarfileset dir="${lib}">
 				<include name="commons-collections-3.2.1.jar" />
+			</tarfileset>
+			<tarfileset dir=".">
+				<include name=".properties" />
 			</tarfileset>
 		</tar>
 	</target>
