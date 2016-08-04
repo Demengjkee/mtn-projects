@@ -31,34 +31,34 @@
     <build>
     	<finalName> ${project.artifactId}-${timestamp}</finalName>
 		
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.0.2</version>
-				<configuration>
-					<archive>
-						<index>false</index>
-						<manifest>
-							<addClasspath>true</addClasspath>
-						</manifest>
-						<manifestEntries>
-							<Main-Class>com.test.Project</Main-Class>
-						</manifestEntries>
-					</archive>
-				</configuration>
-			</plugin>
-		</plugins>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-jar-plugin</artifactId>
+			<version>3.0.2</version>
+			<configuration>
+				<archive>
+					<index>false</index>
+					<manifest>
+						<addClasspath>true</addClasspath>
+					</manifest>
+					<manifestEntries>
+						<Main-Class>com.test.Project</Main-Class>
+					</manifestEntries>
+				</archive>
+			</configuration>
+		</plugin>
+	</plugins>
 		
-		<resources>
-			<resource>
-				<targetPath>conf/</targetPath>
-				<directory>conf/</directory>
-				<includes>
-					<include>*.xml</include>
-				</includes>
-			</resource>
-		</resources>
+	<resources>
+		<resource>
+			<targetPath>conf/</targetPath>
+			<directory>conf/</directory>
+			<includes>
+				<include>*.xml</include>
+			</includes>
+		</resource>
+	</resources>
 		
     </build>
 
