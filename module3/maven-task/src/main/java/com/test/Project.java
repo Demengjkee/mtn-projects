@@ -14,8 +14,9 @@ class Project {
 
   	Runnable test = () -> { System.out.println("up and running"); };
   	for(int i = 0; i < 10; i++) {
-  	  	new Thread(test).start()
+  	  	new Thread(test).start();
   	}
   }
 
 }
+
